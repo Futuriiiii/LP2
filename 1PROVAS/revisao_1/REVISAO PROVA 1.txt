@@ -1,0 +1,70 @@
+(Questão 1) O que é programação concorrente? Quais são os aspectos a serem 
+observados quando do planejamento de sistemas que utilizam processos 
+concorrentes?
+
+- Programação concorrente é a capacidade de executar mais de uma tarefa ao mesmo tempo. 
+
+(Questão 2) Qual o impacto do advento dos processadores multi-núcleo na 
+implementação e execução de programas que utilizam programação concorrente? 
+
+- 
+
+(Questão 3) O que é, em programação concorrente, consistência de memória?
+
+- 
+
+(Questão 4) O que é um processo? Quais são as informações que compreendem o
+ contexto de um processo? 
+
+- 
+
+(Questão 5) Faça um programa em C/C++ que receberá 3 parâmetros: 
+se usará processos ou threads, quantas instâncias serão criadas e um valor em 
+metros, que será o tamanho de uma pista fictícia para uma corrida de 'lebres'.
+
+Exemplo de execução:
+
+	$ ./corrida -t 5 1000 (5 threads, pista de 1000m)
+	lebre 0 saltou 30cm (total: 30)
+	lebre 2 saltou 42cm (total: 42)
+	...
+	lebre 2 saltou 31cm (total: 1002)
+	lebre 2 venceu! 
+
+	$ ./corrida -p 10 500 (10 processos, pista de 500m)
+	lebre 1 saltou 20cm (total: 20)
+	lebre 0 saltou 43cm (total: 43)
+	...
+	lebre 3 saltou 44cm (total: 520)
+	lebre 3 venceu!
+
+Os processos / threads vão representar lebres em uma corrida fictícia; eles 
+devem executar uma função que receberá dois parâmetros: um valor inteiro que
+identifique a lebre (índice) e um valor real (float ou double) que represente
+a distância máxima do salto dessa lebre. A função possui um loop onde cada 
+salto acontece a partir da geração de um valor aleatório entre 1 e o valor 
+máximo definido para a "lebre", considerando valores expressos em cm. 
+
+Faça as lebres "correrem" nessa "pista" com o tamanho definido na execução do
+programa. Para cada vez que a função de cada processo/thread (lebre) executar
+a geração de valores aleatórios (entre 1 e a distância máxima do salto da lebre),
+uma soma de todos os saltos deverá ser armazenada em uma variável com o quanto a
+lebre já percorreu na pista (uma variável float ou double no escopo da função 
+que a lebre executa). A função permanece em loop, "saltando", até que o valor
+acumulado seja igual ou superior ao tamanho da pista.
+
+A cada "salto" (iteração realizada pela função associada ao processo ou a 
+thread), deverá ser exibida uma mensagem contendo a distância do salto 
+efetuado e qual distância total percorrida (dormindo 1s - função sleep - até 
+que dê outro salto). A primeira 'lebre' (thread ou processo) que finalizar sua
+função (ou seja, tenha a variável que represente o quanto a lebre já percorreu
+com valor maior ou igual ao tamanho da pista) deverá exibir uma mensagem onde 
+se declara vencedora e o programa deverá ser finalizado. 
+
+-----------------------------------------------------
+
+(Questão 6) Utilize a implementação da questão 1 para destacar as 
+diferenças do uso de threads e processos na programação em C/C++. Destaque 
+trechos do código e realce as diferenças também as diferenças do ponto de vista
+ da execução. A resposta deverá ser colocada em um arquivo de texto (extensão 
+“.txt”) separado.
